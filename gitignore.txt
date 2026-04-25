@@ -1,0 +1,47 @@
+# EU System Monitor - .gitignore
+
+# API keys and secrets -- NEVER commit these
+.env
+*.env
+GIE_API.env
+
+# Raw downloaded data -- large files, not for repo
+data/raw/
+data/processed/
+data/snapshots/
+
+# Output CSVs -- generated, not for repo
+output/*.csv
+output/eu_monitor_monthly.csv
+output/eu_monitor_daily.csv
+
+# Keep the static dashboard
+!output/eu_system_monitor_static.html
+!output/eu_system_monitor.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Spyder
+.spyderproject.cfg
+.spyproject/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
