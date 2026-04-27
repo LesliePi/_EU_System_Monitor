@@ -263,7 +263,7 @@ Tatai, L. (2026). EU System Monitor: Auditable Supply & System Risk Platform.
 BarefootRealism Labs. GitHub: https://github.com/LesliePie/eu-system-monitor
 ```
 
-Zenodo DOI: [to be added after upload]
+Zenodo DOI: [10.5281/zenodo.19827856](https://doi.org/10.5281/zenodo.19827856)
 
 ---
 
