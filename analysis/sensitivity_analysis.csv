@@ -1,0 +1,19 @@
+threshold,latest_stress,band,cascade_months,mean_stress,is_base,test,industry_amp,food_amp,range,label
+0.5,0.5741,elevated,41.0,0.4806,False,threshold,,,,
+0.55,0.5741,elevated,41.0,0.4809,False,threshold,,,,
+0.6,0.5741,elevated,41.0,0.4813,True,threshold,,,,
+0.65,0.5741,elevated,45.0,0.4821,False,threshold,,,,
+0.7,0.5741,elevated,51.0,0.4829,False,threshold,,,,
+,0.6044,elevated,,0.4841,False,amplifier,1.5,1.25,,
+,0.5993,elevated,,0.4832,False,amplifier,1.5,1.5,,
+,0.5947,elevated,,0.4824,False,amplifier,1.5,1.75,,
+,0.5775,elevated,,0.482,False,amplifier,2.0,1.25,,
+,0.5741,elevated,,0.4813,True,amplifier,2.0,1.5,,
+,0.571,elevated,,0.4807,False,amplifier,2.0,1.75,,
+,0.5558,elevated,,0.4804,False,amplifier,2.5,1.25,,
+,0.5536,elevated,,0.4798,False,amplifier,2.5,1.5,,
+,0.5516,elevated,,0.4792,False,amplifier,2.5,1.75,,
+,0.5631,elevated,,0.48,,norm_range,,,"[15, 100]",pessimistic (lower floor)
+,0.5741,elevated,,0.4813,,norm_range,,,"[20, 100]",base
+,0.5865,elevated,,0.4829,,norm_range,,,"[25, 100]",optimistic (higher floor)
+,0.5724,elevated,,0.4792,,norm_range,,,"[20, 95]",base + realistic ceiling

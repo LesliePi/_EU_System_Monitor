@@ -179,7 +179,8 @@ class GIEProcessor:
         "inventory_lng":       "lng_inventory_bcm",
         "inventory_gwh":       "lng_inventory_gwh",
         "sendOut":             "lng_sendout_gwh",
-        "dtmi_lng":            "lng_capacity_bcm",
+        "dtmi_gwh":            "lng_capacity_gwh",   # GWh kapacitas -- helyes mezo
+        "dtmi_lng":            "lng_capacity_bcm",   # LNG egysegben is megtartjuk
         "dtrs":                "lng_sendout_cap_gwh",
         "status":              "lng_status",
     }
@@ -270,10 +271,15 @@ class GIEProcessor:
             ).clip(lower=0)
             # TWh conversion for dashboard display
             df["lng_inventory_twh"] = df["lng_inventory_gwh"] / 1000.0
-            df["lng_full_pct"] = (
-                df["lng_inventory_gwh"] / df["lng_capacity_bcm"].replace(0, float('nan')) * 100.0
-            ).clip(0, 100)
-
+            # lng_full_pct from raw GIE field (already computed by GIE)
+            # Recompute from inventory vs max capacity using dtmi field
+            # lng_capacity_bcm is stored in GWh (despite the column name)
+            # inventory is also in GWh -- direct ratio * 100
+            df["lng_full_pct"] = np.where(
+            df["lng_capacity_gwh"] > 0,
+            (df["lng_inventory_gwh"] / df["lng_capacity_gwh"] * 100.0).clip(0, 100),
+            np.nan
+        )
         return df
 
     # --------------------------------------------------------
@@ -498,7 +504,9 @@ class FAOProcessor:
     def _add_derived_metrics(self, df: pd.DataFrame) -> pd.DataFrame:
         df = df.sort_values("date").reset_index(drop=True)
         if "ffpi" in df.columns:
-            df["ffpi_yoy_pct"] = _yoy_pct(df["ffpi"])
+            # FAO data is annual -- pct_change(1) compares to previous year
+            # pct_change(12) would compare to 12 years ago which is meaningless
+            df["ffpi_yoy_pct"] = _mom_pct(df["ffpi"])
         return df
 
     # --------------------------------------------------------

@@ -263,7 +263,7 @@ Tatai, L. (2026). EU System Monitor: Auditable Supply & System Risk Platform.
 BarefootRealism Labs. GitHub: https://github.com/LesliePie/eu-system-monitor
 ```
 
-Zenodo DOI: [10.5281/zenodo.19827856](https://doi.org/10.5281/zenodo.19827856)
+Zenodo DOI: [to be added after upload]
 
 ---
 
@@ -279,3 +279,50 @@ from entirely public data, by a single independent researcher,
 in a single working day.
 
 The question this raises is institutional, not technical.
+
+---
+
+## Validation and Robustness
+
+### Sensitivity Analysis
+
+A formal sensitivity analysis (eu_sensitivity_analysis.py) tests
+whether the ELEVATED classification holds across parameter variations:
+
+| Parameter | Range tested | std | Result |
+|-----------|-------------|-----|--------|
+| Cascade threshold | [0.50, 0.70] | 0.0000 | ROBUST |
+| Amplifier values | [1.5, 2.5] x [1.25, 1.75] | 0.0201 | ROBUST |
+| Norm range | 4 variants | 0.0096 | ROBUST |
+
+All 18 parameter combinations: ELEVATED band.
+The classification is parameter-independent.
+
+### Theoretical Foundation
+
+The cascade model follows Lorenz, Battiston & Schweitzer (2009,
+European Physical Journal B, 71:441-460) -- a general framework
+for cascade and contagion processes where nodes fail when
+fragility exceeds threshold.
+
+Cross-sectoral amplification is consistent with ECB/ESRB
+Fit-for-55 stress test methodology (2023) which explicitly
+models "cross-sectoral interactions to capture system-wide
+dynamics and the potential for risk amplification."
+
+### NACE Defense vs Civil Breakdown
+
+The defense/civil industry analysis (eu_monitor_nace_analysis.py)
+shows that the aggregate EU IPI masks a significant divergence:
+
+| Metric | Value (2023-12) |
+|--------|----------------|
+| Defense proxy YoY (C25+C30) | +8.2% |
+| Civil IPI YoY (C29+C20+C26) | +1.9% |
+| Gap | +6.2 percentage points |
+| Defense/Civil ratio since 2015 | 112.9 |
+
+Coverage: DE, FR, IT, ES, PL (~70% of EU27 GDP)
+Source: Eurostat STS_INPR_M, fully audited
+
+All limitations explicitly documented in methodology_nace.md.

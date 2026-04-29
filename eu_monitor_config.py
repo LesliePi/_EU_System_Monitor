@@ -333,7 +333,7 @@ STRESS_INDEX = {
             "source_metric": "ffpi_yoy_pct",
             "direction":     "direct",    # high food inflation = stress
             "weight":        0.25,
-            "norm_range":    [-5.0, 30.0],   # % yoy
+            "norm_range":    [-22.0, 44.0],   # % yoy
         },
     },
 
